@@ -1,0 +1,26 @@
+1.
+cqlsh:saf> create keyspace Employee with  replication={'class':'SimpleStrategy','replication_factor':1};
+
+cqlsh:saf> use Employee ;
+
+2.
+cqlsh:employee> create table empInfo( emp_id int PRIMARY KEY, emp_name text,desig text,dpj timestamp,salary int,dept_name text );
+
+3.
+cqlsh:employee> insert into empInfo(emp_id,emp_name,desig,dpj,salary,dept_name) values( 1, 'gsrk', 'sales', '2022-05-05', 200000, 'cse' );
+
+4.
+cqlsh:employee> update empInfo set emp_name='abc',dept_name='ie'where emp_id=2;
+
+5.cqlsh:employee> select * from emp_Info where emp_id in (1,2,3) order by salary;
+
+6.
+cqlsh:employee> alter table empInfo add project set<text>;
+
+7.
+cqlsh:employee> update empInfo set project={'reactJs','Ml'} where emp_id=1;
+
+8.
+cqlsh:employee> insert into empInfo(emp_id,emp_name,desig,dpj,salary,dept_name) values( 4, 'wxy', 'sde', '2022-02-05', 250000, 'cse' ) using ttl 30;
+cqlsh:employee> select ttl(emp_name) from empInfo;
+
